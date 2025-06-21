@@ -1,6 +1,4 @@
-// Example: /src/pages/DispenseMedicine.tsx
 
-import React from 'react';
 import Html5QRScanner from '../features/Html5QRScanner';
 import { dispenseMedicine } from '../api/dispense';
 

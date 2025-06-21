@@ -36,7 +36,7 @@ export const uploadMedicine = createAsyncThunk<Medicine, FormData>(
   async (formData, thunkAPI) => {
     try {
       const response = await axios.post<Medicine>(
-        'http://localhost:5000/api/v1/medicine/',
+        'https://product-expiry-checker-backend.onrender.com/api/v1/medicine/',
         formData,
         {
           headers: {
@@ -60,7 +60,7 @@ export const deleteMedicine = createAsyncThunk<
   { rejectValue: string }
 >('medicine/delete', async (id, thunkAPI) => {
   try {
-    await axios.delete(`http://localhost:5000/api/v1/medicine/${id}`);
+    await axios.delete(`https://product-expiry-checker-backend.onrender.com/api/v1/medicine/${id}`);
     return id;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(
@@ -86,7 +86,7 @@ export const fetchAllMedicines = createAsyncThunk<
     if (params.page) query.append('page', String(params.page))
     if (params.limit) query.append('limit', String(params.limit))
 
-    const response = await axios.get(`http://localhost:5000/api/v1/medicine?${query.toString()}`)
+    const response = await axios.get(`https://product-expiry-checker-backend.onrender.com/api/v1/medicine?${query.toString()}`)
     return response.data
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response?.data?.error || 'Failed to fetch medicines')
